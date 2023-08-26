@@ -1,0 +1,2031 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=euc-kr" />
+<meta http-equiv="X-UA-Compatible" content="IE=10">
+<meta name="google-site-verification" content="_3jpZUBsfY_RI-t71fI9ZxlRRKAs7eA78BXU255TO_g" /> 
+<link rel="shortcut icon" href="http://ticketimage.interpark.com/TicketImage/playdb/main/favicon.ico">
+<title>공연의 모든 것 - 플레이DB</title>
+<script type="text/javascript" src="http://ticketimage.interpark.com/TicketImage/playdb/v2013/js/jquery.min.js"></script>
+<script type="text/javascript">
+	jQuery.noConflict();
+	var j$ = jQuery; //jquery $ -> j$ 로 사용
+</script>
+
+<script language="javascript" src="/lib/js/prototype.js"></script>
+<script type="text/javascript" src="/lib/js/scriptaculous/scriptaculous.js"></script>
+<script type="text/javascript" src="/lib/js/main_common.js?v=20180604"></script>
+<script language=javascript src="/html/js/top_search.js"></script>
+
+<script language=javascript src="/lib/js/playdb_pcid.js"></script>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({
+google_ad_client: "ca-pub-4677000096238885",
+enable_page_level_ads: true
+});
+</script>
+<link rel="stylesheet" href="//ticketimage.interpark.com/TicketImage/uidev/playDB/styles/common/footer.css" />    <!-- RD-1234 푸터변경 -->
+<script type="text/javascript" src="//ticket.interpark.com/common/footer/footer.js"></script>
+<script type="text/javascript">
+
+	var HDSearch = {
+
+		OnKeyDown : function (event)
+		{
+			// 엔터
+			if (event.keyCode == 13) 
+			{
+				HDSearch.Search();
+			}
+			else
+			{
+				if ( c ) return;
+				document.AllSearch.HDQuery.style.backgroundImage = "";
+				c = true;
+				shIe = false;
+			}
+		}, 
+
+		Search: function()
+		{
+
+			if (document.AllSearch.HDQuery.style.backgroundImage == "" || document.AllSearch.HDQuery.style.backgroundImage == "none")
+			{
+				var sQuery = document.getElementById('HDQuery').value;
+				if (sQuery == "") {
+					alert("검색어를 입력하세요");
+					return;
+				}
+
+				//var sKindCode = document.getElementById('HDKindCode').value;
+				var sKindCode = "";
+				HDSearch.GoSearch(sKindCode, sQuery);
+			}
+			else
+			{
+					location.href = document.AllSearch.action;
+			}
+		},
+
+		GoSearch: function (sKindCode, sQuery)
+		{
+			var SEARCH_URL = "/search/Search.asp";
+			var sGoUrl = SEARCH_URL + "?KindCode=" + sKindCode + "&Query=" + sQuery;
+			location.href = sGoUrl;
+		}
+    }
+
+    function tourOpen() {
+        window.open("https://talk-tour.interpark.com/talk", "TalkTourPC", "width=480, height=790, toolbar=no, menubar=no, scrollbars=no, resizable=no");
+    }
+
+    function businessPerson() {
+        window.open("https://www.ftc.go.kr/bizCommPop.do?wrkr_no=8248102515&apv_perm_no=", "BusPC", "width=720, height=700, toolbar=no, menubar=no, scrollbars=no, resizable=no");
+    }
+
+
+</script>
+<link rel="stylesheet" type="text/css" href="http://ticketimage.interpark.com/TicketImage/uidev/playDB/styles/pages/index.css" />
+<!--<link rel="stylesheet" href="http://ticketimage.interpark.com/TicketImage/main/100506_main/gwb.css" type="text/css" media="all">-->
+
+
+<!--
+<script type="text/javascript">
+/*
+setTimeout(function(){var a=document.createElement("script");
+var b=document.getElementsByTagName("script")[0];
+a.src=document.location.protocol+"//script.crazyegg.com/pages/scripts/0042/4807.js?"+Math.floor(new Date().getTime()/3600000);
+a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
+*/
+</script> 
+-->
+
+
+</head>
+<body>
+
+<!--
+<div id="gatewaybar">
+	<script type="text/javascript" src="/html/interpark/gwb/gwb_link.js"></script>
+	<script type="text/javascript" src="/html/interpark/gwb/gatewaybar_common.js"></script>
+</div>
+-->
+<!-- //서비스전체보기 레이어-->
+
+<div id="wrap">
+    <!-- 헤더 -->
+    <div id="header">
+        <!-- topmenu -->
+        <div class="topmenu">
+			<h2 class="tit">빠른메뉴</h2>
+
+			<ul>
+				<li class="intro"><a href="http://www.interpark.com/"  target="_blank">인터파크 홈</a></li>
+				
+						<li class="login"><a href="/member/login.asp">로그인</a></li>
+					
+						<li class="sitemap"><a href="javascript:ShowServiceLayer('open')">서비스 전체보기</a></li>
+						<li class="ticket"><a href="http://ticket.interpark.com/" target="_blank">인터파크 티켓</a></li>
+				
+			</ul>
+			
+			
+			<!--<table border="0" cellpadding="0" cellspacing="0">
+                <tr>
+                    <td class="menu">
+					 
+						<a href="/member/login.asp"> <img src="http://ticketimage.interpark.com/TicketImage/playdb/2010_renewal/topmenu_login.gif" alt="로그인" /></a>
+					
+					</td>				
+                    <td class="menu"><a href="javascript:ShowServiceLayer('open')"><img src="http://ticketimage.interpark.com/TicketImage/playdb/2010_renewal/topmenu_serviceall.gif" alt="서비스 전체보기" /></a></td>
+                    <td class="menu"><a href="http://ticket.interpark.com/" target="_blank"><img src="http://ticketimage.interpark.com/TicketImage/playdb/2010_renewal/topmenu_ticket.gif" alt="인터파크 티켓" /></a></td>
+                </tr>
+            </table>-->
+
+
+
+        </div>
+        <!-- //topmenu -->
+        <!-- 로고 -->
+        <div class="logo"><a href="/Index.asp"><img src="http://ticketimage.interpark.com/TicketImage/playdb/2010_renewal/logo.jpg" alt="PlayDB" /></a></div>
+        <!-- //로고 -->
+        <!-- 검색 -->
+        <div class="search"> 
+		<form name='AllSearch' method='Post' onSubmit="javascript:HDSearch.Search(); return false;">
+			<span class="searchbox">
+            <input type="text" id="HDQuery" class="input_text" />
+            </span>
+            <a href="javascript: HDSearch.Search();" onFocus="this.blur()"><input type="image" alt="검색" src="http://ticketimage.interpark.com/TicketImage/playdb/2010_renewal/btn_search.gif" class="btn" /></a>
+			<input type="hidden" id="HDKindCode" name="HDKindCode" />
+		</form>
+        </div>
+        <!-- //검색 -->
+        <!-- 검색랭킹 -->
+       
+        <!-- 금일검색랭킹 레이어 창-->
+        
+		 <div class="ranking">
+            <table width="360" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td width="50"><img src="http://ticketimage.interpark.com/TicketImage/playdb/2010_renewal/ranking_title1.gif" alt="검색랭킹" width="43" height="11" /></td>
+                    <td width="22"><img src="http://ticketimage.interpark.com/TicketImage/playdb/2010_renewal/ranking_num_01.gif" alt="rank1" width="12" height="11" /></td>
+                    <td width="130"><a href="/playdb/playdbDetail.asp?sReqPlayno=191525">송가인 콘서트 - 제주</a></td>
+                    <td width="32">
+					
+					<img src="http://ticketimage.interpark.com/TicketImage/playdb/2010_renewal/ico_rank_same.gif" alt="same" />
+					
+					</td>
+                    <td width="1"><img src="http://ticketimage.interpark.com/TicketImage/playdb/2010_renewal/dot_line.gif" /></td>
+                    <td width="10"></td>
+                    <td width="70"><a href="/artistdb/detail.asp?ManNo=39735">윤은채</a></td>
+                    <td width="32">
+					
+					<img src="http://ticketimage.interpark.com/TicketImage/playdb/2010_renewal/ico_rank_same.gif" alt="same" />
+					
+					</td>
+                    <td width="13"><img src="http://ticketimage.interpark.com/TicketImage/playdb/2010_renewal/btn_rankmore.gif" width="13" height="12" alt="more" onmouseover="ShowRank_Layer('1');" onmouseout="ShowRank_Layer('2');"/></td>
+                </tr>
+            </table>
+        </div>
+		<div class="rankingon" style="display:none;" id="Rank_Layer" onmouseover="ShowRank_Layer('1');" onmouseout="ShowRank_Layer('2');">
+            <table width="334" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td class="rankingon_title">
+                    	<table width="320" border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td><a href="/ranking/TotalRanking.asp"><img src="http://ticketimage.interpark.com/TicketImage/playdb/2010_renewal/ranking_title2.gif" alt="금일검색랭킹" /></a></td>
+                                <td width="13"><a href="javascript:ShowRank_Layer('2');"><img src="http://ticketimage.interpark.com/TicketImage/playdb/2010_renewal/btn_close.gif" alt="닫기" /></a></td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="rankinglist">
+                    	<table border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td width="22">
+                                	<!-- 넘버링 -->
+                                    <table border="0" cellspacing="0" cellpadding="0">
+                                        <tr>
+                                            <td height="20"><img src="http://ticketimage.interpark.com/TicketImage/playdb/2010_renewal/ranking_num_01.gif" alt="rank1" /></td>
+                                        </tr>
+                                        <tr>
+                                            <td height="20"><img src="http://ticketimage.interpark.com/TicketImage/playdb/2010_renewal/ranking_num_02.gif" alt="rank2" /></td>
+                                        </tr>
+                                        <tr>
+                                            <td height="20"><img src="http://ticketimage.interpark.com/TicketImage/playdb/2010_renewal/ranking_num_03.gif" alt="rank3" /></td>
+                                        </tr>
+                                        <tr>
+                                            <td height="20"><img src="http://ticketimage.interpark.com/TicketImage/playdb/2010_renewal/ranking_num_04.gif" alt="rank4" /></td>
+                                        </tr>
+                                        <tr>
+                                            <td height="20"><img src="http://ticketimage.interpark.com/TicketImage/playdb/2010_renewal/ranking_num_05.gif" alt="rank5" /></td>
+                                        </tr>
+                                    </table>
+                                    <!-- //넘버링 -->  
+                                </td>
+                                <td width="175">
+
+							
+									
+                                	<!-- 공연랭킹 -->
+                                    <table border="0" cellspacing="0" cellpadding="0">
+
+							
+                                        <tr>
+                                            <td width="130" height="20" class="ranking01"><a href="/playdb/PlaydbDetail.asp?sReqPlayNo=191525">송가인 콘서트 - 제주</a></td>
+                                            <td align="center">
+											
+											<img src="http://ticketimage.interpark.com/TicketImage/playdb/2010_renewal/ico_rank_same.gif" alt="same" />
+																						
+											</td>
+                                        </tr>
+                            
+                                        <tr>
+                                            <td width="130" height="20" class="ranking01"><a href="/playdb/PlaydbDetail.asp?sReqPlayNo=191672">루시 콘서트</a></td>
+                                            <td align="center">
+											
+											<img src="http://ticketimage.interpark.com/TicketImage/playdb/2010_renewal/ico_rank_new.gif" alt="new" />
+																						
+											</td>
+                                        </tr>
+                            
+                                        <tr>
+                                            <td width="130" height="20" class="ranking01"><a href="/playdb/PlaydbDetail.asp?sReqPlayNo=190611">씨아이엑스 팬미팅</a></td>
+                                            <td align="center">
+											
+											<img src="http://ticketimage.interpark.com/TicketImage/playdb/2010_renewal/ico_rank_new.gif" alt="new" />
+																						
+											</td>
+                                        </tr>
+                            
+                                        <tr>
+                                            <td width="130" height="20" class="ranking01"><a href="/playdb/PlaydbDetail.asp?sReqPlayNo=191416">헤이맨 콘서트</a></td>
+                                            <td align="center">
+											
+											<img src="http://ticketimage.interpark.com/TicketImage/playdb/2010_renewal/ico_rank_new.gif" alt="new" />
+																						
+											</td>
+                                        </tr>
+                            
+                                        <tr>
+                                            <td width="130" height="20" class="ranking01"><a href="/playdb/PlaydbDetail.asp?sReqPlayNo=191096">애니송 커버 콘서트</a></td>
+                                            <td align="center">
+											
+											<img src="http://ticketimage.interpark.com/TicketImage/playdb/2010_renewal/ico_rank_new.gif" alt="new" />
+																						
+											</td>
+                                        </tr>
+                            
+                                    </table>
+                                    <!-- //공연랭킹 -->
+                                </td>
+                                <td width="1" background="http://ticketimage.interpark.com/TicketImage/playdb/2010_renewal/dot_lin2.gif"></td>
+                                <td width="10"></td>
+                                <td width="126">
+                                <!-- 인물랭킹 -->
+
+							
+									<table border="0" cellspacing="0" cellpadding="0">
+                                        
+							
+										<tr>
+                                            <td width="95" height="20" class="ranking01"><a href="/artistdb/detail.asp?ManNo=39735">윤은채</a></td>
+                                            <td align="center">
+											
+											<img src="http://ticketimage.interpark.com/TicketImage/playdb/2010_renewal/ico_rank_same.gif" alt="same" />
+																								
+											</td>
+                                        </tr>
+                            
+										<tr>
+                                            <td width="95" height="20" class="ranking01"><a href="/artistdb/detail.asp?ManNo=45597">산다라박</a></td>
+                                            <td align="center">
+											
+											<img src="http://ticketimage.interpark.com/TicketImage/playdb/2010_renewal/ico_rank_up.gif" alt="up" /> <span class="rank_up">28</span>
+																								
+											</td>
+                                        </tr>
+                            
+										<tr>
+                                            <td width="95" height="20" class="ranking01"><a href="/artistdb/detail.asp?ManNo=50339">박성현</a></td>
+                                            <td align="center">
+											
+											<img src="http://ticketimage.interpark.com/TicketImage/playdb/2010_renewal/ico_rank_up.gif" alt="up" /> <span class="rank_up">43</span>
+																								
+											</td>
+                                        </tr>
+                            
+										<tr>
+                                            <td width="95" height="20" class="ranking01"><a href="/artistdb/detail.asp?ManNo=48922">이한별</a></td>
+                                            <td align="center">
+											
+											<img src="http://ticketimage.interpark.com/TicketImage/playdb/2010_renewal/ico_rank_up.gif" alt="up" /> <span class="rank_up">41</span>
+																								
+											</td>
+                                        </tr>
+                            
+										<tr>
+                                            <td width="95" height="20" class="ranking01"><a href="/artistdb/detail.asp?ManNo=44987">이인규</a></td>
+                                            <td align="center">
+											
+											<img src="http://ticketimage.interpark.com/TicketImage/playdb/2010_renewal/ico_rank_up.gif" alt="up" /> <span class="rank_up">17</span>
+																								
+											</td>
+                                        </tr>
+                            
+                                    </table>
+                                <!-- //인물랭킹 -->
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- //금일검색랭킹-->
+        <!-- //검색랭킹 -->
+        <!-- GNB -->
+		<div class="gnb_new">
+			<ul>
+				<li onMouseOver="open_subMenu('1');" onmouseout="hide_subMenu('1');"><a href="/playdb/playdblist.asp?sReqMainCategory=000001"><img id="gnb_img1" src="http://ticketimage.interpark.com/TicketImage/playdb/2010_renewal/gnmenu_01.gif" alt="공연DB" /></a></li>
+				<li onMouseOver="open_subMenu('2');" onmouseout="hide_subMenu('2');"><a href="/artistdb/index.asp"><img id="gnb_img2" src="http://ticketimage.interpark.com/TicketImage/playdb/2010_renewal/gnmenu_02.gif" alt=" 인물DB" /></a></li>
+				<li onMouseOver="open_subMenu('3');"  onmouseout="hide_subMenu('3');"><a href="/magazine/index.asp"><img id="gnb_img3" src="http://ticketimage.interpark.com/TicketImage/playdb/2010_renewal/gnmenu_03.gif" alt="매거진" /></a></li>
+				<!--<li onMouseOver="open_subMenu('4');"  onmouseout="hide_subMenu('4');"><a href="/magazine/MovieIndex.asp"><img id="gnb_img4" src="http://ticketimage.interpark.com/TicketImage/playdb/2010_renewal/gnmenu_04.gif" alt="영상/포토" /></a></li>-->
+				<li onMouseOver="open_subMenu('4');"  onmouseout="hide_subMenu('4');"><a href="/community/Publicity_list.asp?bbsno=31"><img id="gnb_img4" src="http://ticketimage.interpark.com/TicketImage/playdb/2010_renewal/gnmenu_05.gif" alt="커뮤니티" /></a></li>
+				<li onMouseOver="open_subMenu('5');"  onmouseout="hide_subMenu('5');"><a href="/Event/Event_Main.asp"><img id="gnb_img5" src="http://ticketimage.interpark.com/TicketImage/playdb/2010_renewal/gnmenu_06.gif" alt="이벤트" /></a></li>
+				<li onMouseOver="open_subMenu('6');"  onmouseout="hide_subMenu('6');"><a href="/ranking/TotalRanking.asp"><img id="gnb_img6" src="http://ticketimage.interpark.com/TicketImage/playdb/2010_renewal/gnmenu_07.gif" alt="랭킹" /></a></li>
+			</ul>
+			<!--<div class="gnbtn">
+				<ul>-->
+					<!-- 뮤지션 메뉴 삭제 (2017.10.23 김민철) -->
+					<!-- <li><a href="/magazine/Musician_List.asp"><img src="http://ticketimage.interpark.com/TicketImage/playdb/2010_renewal/btn_musician.gif" alt="뮤지션"></a></li> -->
+					<!--<li><a href="/magazine/expertize_MonthList.asp"><img src="http://ticketimage.interpark.com/TicketImage/playdb/2010_renewal/btn_review20.gif" alt="전문가20자평" /></a></li>
+					<li><a href="/community/bstage/bstage_list.asp"><img src="http://ticketimage.interpark.com/TicketImage/playdb/2010_renewal/btn_diary.gif" alt="막장일기" /></a></li>
+				</ul>
+			</div>-->
+		</div>
+		<!-- -->
+
+
+        <!-- 공연DB -->
+		<div id="gn_on_new1" style="display:none;"  onMouseOver="open_subMenu('1');" onMouseOut="hide_subMenu('1');">
+			<table border="0" cellpadding="0" cellspacing="0" width="130">
+				<tr>
+					<td>
+						<ul class="gn_ont gnbg1">
+							<li><a href="/playdb/playdblist.asp?sReqMainCategory=000001">뮤지컬</a></li>
+							<li><a href="/playdb/playdblist.asp?sReqMainCategory=000002">연극</a></li>
+							<li><a href="/playdb/playdblist.asp?sReqMainCategory=000003">콘서트</a></li>
+							<li><a href="/playdb/playdblist.asp?sReqMainCategory=000004">무용</a></li>
+							<li><a href="/playdb/playdblist.asp?sReqMainCategory=000005">클래식/오페라</a></li>
+							<li><a href="/playdb/playdblist.asp?sReqMainCategory=000006">마술/쇼</a></li>
+							<li class="p"><a href="/playdb/playdblist.asp?sReqMainCategory=000007">국악</a></li>
+							<li><a href="/playdb/playdblist.asp?sReqMainCategory=000008">해외 뮤지컬</a></li>
+							<li class="p"><a href="/playdb/playdblist.asp?sReqMainCategory=000009">해외 연극</a></li>
+							<li><a href="/placedb/placedbList.asp?strTab=1&selRegion=099099">공연장</a></li>
+							<li><a href="/productiondb/index.asp">제작사</a></li>
+							<li><a href="/magazine/CalenderPlayList.asp">공연캘린더</a></li>
+						</ul>
+					</td>
+				</tr>
+			</table>
+		</div>
+        <!-- //공연DB on -->
+        <!-- 인물DB on -->
+		<div id="gn_on_new2" style="display:none;" onMouseOver="open_subMenu('2');" onMouseOut="hide_subMenu('2');">
+			<table border="0" cellpadding="0" cellspacing="0" width="130">
+				<tr>
+					<td>
+			<ul class="gn_ont gnbg2">
+				<li><a href="/artistdb/list.asp?code=013003">뮤지컬 배우</a></li>
+				<li><a href="/artistdb/list.asp?code=013004">연극 배우</a></li>
+				<li><a href="/artistdb/list.asp?code=013001">뮤지션</a></li>
+				<li><a href="/artistdb/list.asp?code=013005">클래식 뮤지션</a></li>
+				<li><a href="/artistdb/list.asp?code=013006">성악가</a></li>
+				<li><a href="/artistdb/list.asp?code=013007">국악인</a></li>
+				<li><a href="/artistdb/list.asp?code=013009">무용인</a></li>
+				<li class="p"><a href="/artistdb/list.asp?code=013008">예술단체</a></li>
+				<li><a href="/artistdb/list.asp?code=013011">제작스태프</a></li>
+				<li class="p"><a href="/artistdb/list.asp?code=013012">기획스태프</a></li>
+				<li><a href="/artistdb/index_detail.asp">직종별 전체보기</a></li>
+			</ul>
+					</td>
+				</tr>
+			</table>
+		</div>
+
+        <!-- //인물DB on -->
+        <!-- 매거진 on -->
+		<div id="gn_on_new3" style="display:none;"  onmouseover="open_subMenu('3');" onMouseOut="hide_subMenu('3');">
+			<table border="0" cellpadding="0" cellspacing="0" width="130">
+				<tr>
+					<td>
+						<ul class="gn_ont gnbg3">
+							<li class="p"><a href="/magazine/magazine_temp.asp?kindno=ALL">기사 전체보기</a></li>
+							<li><a href="/magazine/magazine_temp.asp?kindno=4">현장스케치</a></li>
+							<li><a href="/magazine/magazine_temp.asp?kindno=8">인터뷰</a></li>
+							<li><a href="/magazine/magazine_temp.asp?kindno=11">스페셜 테마</a></li>
+							<li><a href="/magazine/magazine_temp.asp?kindno=2">공연뉴스</a></li>
+							<li><a href="/magazine/magazine_temp.asp?kindno=3">리뷰</a></li>
+							<li class="p"><a href="/magazine/webtoon_writelist.asp?Type=All">웹툰</a></li>
+							<li><a href="/magazine/MovieIndex.asp">영상</a></li>
+							<li><a href="/magazine/photogallary.asp">포토갤러리</a></li>
+							<li><a href="/magazine/ostlist.asp">OST</a></li>
+						</ul>
+					</td>
+				</tr>
+			</table>
+		</div>
+
+        <!-- //매거진 on -->
+       
+        <!-- 커뮤니티 on -->
+        <div id="gn_on_new4" style="display:none;" onMouseOver="open_subMenu('4');" onMouseOut="hide_subMenu('4');">
+			<table border="0" cellpadding="0" cellspacing="0" width="170">
+				<tr>
+					<td>
+			<ul class="gn_ont gnbg4">
+				<!--<li><a href="/community/PlayReview_Main.asp">관객리뷰</a></li>
+				<li><a href="/magazine/expertize_MonthList.asp">전문가 20자평</a></li>-->
+				<!-- 2017-10-26 김민철 (플디 메뉴 개편) -->
+				<!--<li><a href="/magazine/playdb_writingcontest_win.asp?kindno=10">플디 백일장 당선작</a></li>-->
+				<!--<li class="p"><a href="/event/PlayLotteryEvent.asp">플레이디비 방명록</a></li>-->
+				<!--<li><a href="/community/Publicity_list.asp?bbsno=30">이벤트 정보</a></li>-->
+				<li><a href="/community/Publicity_list.asp?bbsno=31">기획사 홍보</a></li>
+				<li><a href="/community/Publicity_list.asp?bbsno=29">오디션 / 구인 </a></li>				
+				<li><a href="/community/RequestUpdate_List.asp">인물공연 업데이트 요청</a></li>
+				<li><a href="/magazine/WeekSchedule.asp">이 주의 주요행사</a></li>
+			</ul>
+					</td>
+				</tr>
+			</table>
+		</div>
+
+        <!-- //커뮤니티 on -->
+        <!-- 이벤트 on -->
+         <div id="gn_on_new5" style="display:none;" onMouseOver="open_subMenu('5');" onMouseOut="hide_subMenu('5');">
+			<table border="0" cellpadding="0" cellspacing="0" width="150">
+				<tr>
+					<td>
+			<ul class="gn_ont gnbg5">
+				<!--<li><a href="/event/Event_view.asp?sReqNo=2">스타에게 한마디</a></li>-->
+				<li><a href="/event/Event_view.asp?sReqNo=3">리플리플</a></li>
+				<li><a href="/event/Event_view.asp?sReqNo=8">배우와의 만남</a></li>
+				<!--<li><a href="/event/Event_view.asp?sReqNo=11">플디 백일장</a></li>-->
+				<li><a href="/event/EventPollAndQuiz_List.asp?PollType=053001">설문이벤트</a></li>
+				<!--<li><a href="/event/Event_ReViewApplication.asp">공연리뷰단</a></li>-->
+				<li><a href="/event/EventPollAndQuiz_List.asp?PollType=053002">퀴즈이벤트</a></li>
+<!-- 				<li class="p"><a href="/Event/Auction/SnowManDonation.asp">스타자선경매</a></li> -->
+<!--				<li class="p"><a href="/Event/Auction/CharityAuction.asp">스타자선경매</a></li>-->
+				<li><a href="/community/Community_Notice.asp?bbsno=25">이벤트 당첨자 발표</a></li>
+			</ul>
+					</td>
+				</tr>
+			</table>
+		</div>
+
+        <!-- //이벤트 on -->
+        <!-- 랭킹 on -->
+       <div id="gn_on_new6" style="display:none;" onMouseOver="open_subMenu('6');" onMouseOut="hide_subMenu('6');">
+			<table border="0" cellpadding="0" cellspacing="0" width="175">
+				<tr>
+					<td>
+			<ul class="gn_ont gnbg6">
+				<li class="p"><a href="/ranking/TotalRanking.asp">DB 검색랭킹</a></li>
+				<li><a href="/ranking/Ticket/TPBoxOffice.asp?KindOfGoods=P&Flag=D">공연예매랭킹</a></li>
+				<!-- 2017-10-26 김민철 (플디 메뉴 개편) -->
+				<!--<li class="p"><a href="/ranking/Ticket/TPBoxOffice.asp?KindOfGoods=01003&Flag=D">콘서트예매랭킹</a></li>-->
+				<!--<li><a href="/ranking/Ticket/TPBoxOfficeHistoryReport.asp?KindOfGoods=P&Flag=W">공연-->
+						<!--랭킹 분석 리포트</a></li>-->
+				<!--<li><a href="/ranking/Ticket/TPBoxOfficeHistoryReport.asp?KindOfGoods=01003&Flag=W">콘서트 -->
+						<!--랭킹 분석 리포트</a></li>-->
+			
+			</ul>
+					</td>
+				</tr>
+			</table>
+		</div>
+
+        <!-- //랭킹 on -->  
+        <!-- //GNB -->
+        <!-- 이벤트배너 -->
+		
+
+<div class="topevent" id="topEvent1" style="display:none;"><a id="top_event_link" href="http://www.playdb.co.kr/event/Event_Detail.asp?sReqNo=3&sReqseq=4666" onfocus="blur();"><img id="top_event_img" src="http://ticketimage.interpark.com/TicketImage/playdb/event/hottalk/190215_04_GN.gif" alt="" border="1"/></a></div>
+			
+
+
+<div class="topevent" id="topEvent2" style="display:none;"><a id="top_event_link" href="http://www.playdb.co.kr/event/Event_Detail.asp?sReqNo=3&sReqseq=4660" onfocus="blur();"><img id="top_event_img" src="http://ticketimage.interpark.com/TicketImage/playdb/event/hottalk/190215_04_GN.gif" alt="" border="1"/></a></div>
+			
+
+
+<div class="topevent" id="topEvent3" style="display:none;"><a id="top_event_link" href="http://www.playdb.co.kr/event/Event_Detail.asp?sReqNo=3&sReqseq=4659" onfocus="blur();"><img id="top_event_img" src="http://ticketimage.interpark.com/TicketImage/playdb/event/hottalk/201027_01_GN.gif" alt="" border="1"/></a></div>
+			
+
+
+<div class="topevent" id="topEvent4" style="display:block;"><a id="top_event_link" href="http://www.playdb.co.kr/event/Event_Detail.asp?sReqNo=3&sReqseq=4658" onfocus="blur();"><img id="top_event_img" src="http://ticketimage.interpark.com/TicketImage/playdb/event/hottalk/201005_01_GN.gif" alt="" border="1"/></a></div>
+			
+
+
+<script type="text/javascript">
+	var MaxCnt = 4;
+	var topCnt = 1;
+	function MoveTopEvent(type)
+	{
+		$("topEvent"+topCnt).style.display = "none";
+
+		if(type =="next")
+		{
+			topCnt += 1;
+
+			if(topCnt> MaxCnt )
+			{
+				topCnt = 1;
+			}
+			
+			$("topEvent"+topCnt).style.display = "block";
+
+		}
+		else
+		{
+			topCnt -= 1;
+
+			if(topCnt < 1)
+			{
+				topCnt = MaxCnt;
+			}
+
+			$("topEvent"+topCnt).style.display = "block";
+
+		}
+		
+	}
+
+</script>
+
+
+        <div class="topevent_btn">
+            <table border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <!--<td width="43"><img src="http://ticketimage.interpark.com/TicketImage/playdb/2010_renewal/gntitle_event.gif" /></td>-->
+                    <td width="14"><a href="javascript:MoveTopEvent('pre')"><img src="http://ticketimage.interpark.com/TicketImage/playdb/2010_renewal/btn_gnpre.gif" /></a></td>
+                    <td width="22"><a href="javascript:MoveTopEvent('next')"><img src="http://ticketimage.interpark.com/TicketImage/playdb/2010_renewal/btn_gnnext.gif" /></a></td>
+                </tr>
+            </table>
+        </div>
+
+		<div class="serviceall" style="display:none;" id="ServiceLayer">
+		
+		<h2><img src="http://ticketimage.interpark.com/TicketImage/playdb/2010_renewal/title_serviceall.gif" alt="플레이디비 서비스 전체보기" /></h2>
+		<p><a href="javascript:ShowServiceLayer('')"><img src="http://ticketimage.interpark.com/TicketImage/playdb/2010_renewal/btn_close2.gif" class="serviceallbtn" alt="닫기" /></a></p>
+		<ul class="st">
+			<li class="stilte"><a href="/playdb/playdblist.asp?sReqMainCategory=000001">공연DB</a></li>
+			<li><a href="/playdb/playdblist.asp?sReqMainCategory=000001">뮤지컬</a></li>
+			<li><a href="/playdb/playdblist.asp?sReqMainCategory=000002">연극</a></li>
+			<li><a href="/playdb/playdblist.asp?sReqMainCategory=000003">콘서트</a></li>
+			<li><a href="/playdb/playdblist.asp?sReqMainCategory=000004">무용</a></li>
+			<li><a href="/playdb/playdblist.asp?sReqMainCategory=000005">클래식/오페라</a></li>
+			<li><a href="/playdb/playdblist.asp?sReqMainCategory=000006">마술/쇼</a></li>
+			<li class="sbt"><a href="/playdb/playdblist.asp?sReqMainCategory=000007">국악</a></li>
+			<li><a href="/playdb/playdblist.asp?sReqMainCategory=000008">해외뮤지컬</a></li>
+			<li class="sbt"><a href="/playdb/playdblist.asp?sReqMainCategory=000009">해외연극</a></li>
+			<li><a href="/placedb/PlacedbList.asp?strTab=1&selRegion=099099">공연장</a></li>
+			<li><a href="/productiondb/index.asp">제작사</a></li>
+			<li><a href="/magazine/CalenderPlayList.asp">공연캘린더</a></li>
+		</ul>
+		<ul>
+			<li class="stilte"><a href="/artistdb/index.asp">인물DB</a></li>
+			<li><a href="/artistdb/list.asp?code=013003">뮤지컬배우</a></li>
+			<li><a href="/artistdb/list.asp?code=013004">연극배우</a></li>
+			<li><a href="/artistdb/list.asp?code=013001">뮤지션</a></li>
+			<li><a href="/artistdb/list.asp?code=013005">클래식뮤지션</a></li>
+			<li><a href="/artistdb/list.asp?code=013006">성악가</a></li>
+			<li><a href="/artistdb/list.asp?code=013007">국악인</a></li>
+			<li><a href="/artistdb/list.asp?code=013009">무용인</a></li>
+			<li class="sbt"><a href="/artistdb/list.asp?code=013008">예술단체</a></li>
+			<li><a href="/artistdb/list.asp?code=013011">제작스태프</a></li>
+			<li class="sbt"><a href="/artistdb/list.asp?code=013012">기획스태프</a></li>
+			<li><a href="/artistdb/index_detail.asp">직종별 전체보기</a></li>
+		</ul>
+		<ul>
+			<li class="stilte"><a href="/magazine/index.asp">매거진</a></li>
+			<!-- 2017-10-26 김민철 (플디 메뉴 개편) -->
+			<li class="sbt"><a href="/magazine/magazine_temp.asp?kindno=ALL">기사 전체보기</a></li>
+			<li><a href="/magazine/magazine_temp.asp?kindno=4">현장스케치</a></li>
+			<li><a href="/magazine/magazine_temp.asp?kindno=8">인터뷰</a></li>
+			<li><a href="/magazine/magazine_temp.asp?kindno=11">스페셜테마</a></li>
+			<li><a href="/magazine/magazine_temp.asp?kindno=2">공연뉴스</a></li>
+			<li><a href="/magazine/magazine_temp.asp?kindno=3">리뷰</a></li>
+			<li class="sbt"><a href="/magazine/webtoon_writelist.asp?Type=All">웹툰</a></li>
+			<li><a href="/magazine/MovieIndex.asp">영상</a></li>
+			<li><a href="/magazine/photogallary.asp">포토갤러리</a></li>
+			<li><a href="/magazine/ostlist.asp">OST</a></li>
+		</ul>
+		<ul>
+			<li class="stilte"><a href="/community/Publicity_list.asp?bbsno=31">커뮤니티</a></li>
+			<!--<li><a href="/community/PlayReview_Main.asp">관객리뷰</a></li>
+			<li><a href="/magazine/expertize_MonthList.asp">전문가 20자 평</a></li>-->
+			<!-- 2017-10-26 김민철 (플디 메뉴 개편) -->
+			<!--<li><a href="/magazine/playdb_writingcontest_win.asp?kindno=10">플디 백일장 당선작</a></li>-->
+			<!--<li class="sbt"><a href="/event/PlayLotteryEvent.asp">플레이디비 방명록</a></li>-->
+			<!--<li><a href="/community/Publicity_list.asp?bbsno=30">이벤트 정보</a></li>-->
+			<li><a href="/community/Publicity_list.asp?bbsno=31">기획사 홍보</a></li>
+			<li><a href="/community/Publicity_list.asp?bbsno=29">오디션/구인</a></li>
+			<li><a href="/community/Community_List.asp?BBSNo=7">인물/공연 업데이트요청</a></li>
+			<li><a href="/magazine/WeekSchedule.asp">이 주의 주요행사</a></li>
+		</ul>
+		<ul>
+			<li class="stilte"><a href="/Event/Event_Main.asp">이벤트</a></li>
+			<!--<li><a href="/event/Event_view.asp?sReqNo=2">스타에게 한마디</a></li>-->
+			<li><a href="/event/Event_view.asp?sReqNo=3">리플리플</a></li>
+			<li><a href="/event/Event_view.asp?sReqNo=8">배우와의 만남</a></li>
+			<!--<li><a href="/event/Event_view.asp?sReqNo=11">플디 백일장</a></li>-->
+			<li><a href="/event/EventPollAndQuiz_List.asp?PollType=053001">설문 이벤트</a></li>
+			<!--<li><a href="/event/EventPollAndQuiz_List.asp?PollType=053002">공연 리뷰단</a></li>-->
+			<li><a href="/event/Event_ReViewApplication.asp">퀴즈 이벤트</a></li>
+	<!--         <li class="sbt"><a href="/Event/Auction/SnowManDonation.asp">스타자선경매</a></li> -->
+	<!--        <li class="sbt"><a href="/Event/Auction/CharityAuction.asp">스타자선경매</a></li>-->
+			<li><a href="/community/Community_Notice.asp?bbsno=25">이벤트 당첨자발표</a></li>
+		</ul>
+		<ul>
+			<li class="stilte"><a href="/ranking/TotalRanking.asp">랭킹</a></li>
+			<li class="sbt"><a href="/ranking/TotalRanking.asp">DB검색랭킹</a></li>
+			<li><a href="/ranking/Ticket/TPBoxOffice.asp?KindOfGoods=P&Flag=D">공연 예매랭킹</a></li>
+			<!-- 2017-10-26 김민철 (플디 메뉴 개편) -->
+			<!--<li class="sbt"><a href="/ranking/Ticket/TPBoxOffice.asp?KindOfGoods=01003&Flag=D">콘서트 예매랭킹</a></li>-->
+			<!--<li><a href="/ranking/Ticket/TPBoxOfficeHistoryReport.asp?KindOfGoods=P&Flag=W">공연 랭킹 분석 리포트</a></li>-->
+			<!--<li class="sbt"><a href="/ranking/Ticket/TPBoxOfficeHistoryReport.asp?KindOfGoods=01003&Flag=W">콘서트 랭킹 분석 리포트</a></li>-->
+		  
+		</ul>
+		<ul>
+			<!--<li class="stilte"><a href="/community/bstage/bstage_list.asp">막장일기</a></li>-->
+			<li class="stilte"><a href="/doc/info.asp">서비스 이용안내</a></li>
+			<!--<li><a href="#">서비스 이용안내</a></li>-->
+			<!--<li><a href="/html/event/webzine_guide.asp?tab=Webzine">플디 200%활용법</a></li>
+			<li class="sbt"><a href="/html/event/webzine_guide.asp?tab=Mobile">플디 모바일</a></li>-->
+			<li><a href="/doc/content_update.asp">컨텐츠 등록문의</a></li>
+			<li class="sbt"><a href="/doc/cooperation.asp">광고제휴문의</a></li>
+			<li><a href="/doc/agreement.asp">이용약관</a></li>
+			<li><a href="http://www.interpark.com/gate/info/protect_privacy.html" target="_blank">개인정보보호정책</a></li>
+		</ul>
+	</div>
+
+	<!-- 플디 초이스(우귀)-->
+	<div class="choice" id="mainRightBanner" style="position:absolute;visibility:visible;top:167px">
+	   
+	</div>
+<script type="text/javascript" src="/lib/js/eventBanner_new.js"></script>
+<div class="bannerBox rightWing">
+	<div class="adsbygoogle">	
+		<!--<ins data-revive-zoneid="193" data-revive-id="32fc02fb74640f115edf4326579262d8"></ins>-->
+		<script type="text/javascript" src="http://addb.interpark.com/RealMedia/ads/adstream_jx.ads/www.playdb.co.kr/ROS/ss/right@Right"></script>
+	</div>
+</div>
+<!-- //플디 초이스(우귀)-->
+<SCRIPT LANGUAGE="JavaScript" src="/lib/js/prototype.js"></SCRIPT>
+
+<!-- 로케이션 -->
+
+
+<script language="javascript" src="./lib/artist_detail.js"></script>
+<script language="javascript" src="/lib/js/LayerContent.js"></script>
+<script language="JavaScript" src="/lib/js/twitter.js"></script>
+<script language=javascript src="/community/lib/js/community_ifm.js"></script>
+<script language=javascript src="/community/lib/js/comment.js"></script>
+<Script language=javascript src="http://www.playdb.co.kr/event/PlayIcon.asp"></script>	<!--플로팅배너-->
+
+<!-- 자동링크 관련 -->
+<script language="javascript" src="/lib/js/prototype.js"></script>
+<script language="javascript" src="/lib/js/TXMLRs.js"></script>
+<script language="javascript" src="/lib/js/AutoLink.js"></script>
+
+<script type="text/javascript">
+	var firstImage = "http://ticketimage.interpark.com/PlayDictionary/DATA/PlayDic/PlayDicUpload/040004/19/10/0400041910_45453_02.745.gif";
+	function ChangeManImage(mImg, si)
+	{
+		
+		if(mImg !="")
+		{
+			$("manImage").src = mImg;
+			$("photo_thum"+si).className = "point";
+		}	
+		else
+		{
+			$("manImage").src = firstImage;
+			$("photo_thum"+si).className = ""
+		}
+	}
+
+	function ShowDetail(type)
+	{
+		if(type=="1")
+		{
+			$("TicketPowerDetail").style.left = "270px";
+			$("TicketPowerDetail").style.display = "block";
+		}
+		else
+		{
+			$("TicketPowerDetail").style.display = "none";
+		}
+	}
+
+
+
+	function f_OpenMovieEx(sReqPlayNo, sReqMediaNo, sMovieCategory) {
+
+		var url = "/magazine/MovieView.asp?sReqPlayNo=" + sReqPlayNo + "&sReqKind=" + sMovieCategory + "&sReqMediaNo=" + sReqMediaNo;
+		window.location.href = url;
+	}
+
+	function f_OpenOst(sReqPlayNo,sReqMediaNo) {
+		window.open("/magazine/OstDetail.asp?sReqPlayNo=" + sReqPlayNo + "&sReqKind=017001&sReqMediaNo=" + sReqMediaNo,"popup","width=374,height=500,scrollbars=yes");
+	}
+
+	function still_popup(code_)
+	{
+		window.open("http://www.playdb.co.kr/magazine/PhotoDetail.asp?sReqKind=017002&sReqManNo=" + code_, "still", "width=870, height=640,");
+	}
+
+	function ShowStandard(type)
+	{
+		window.open("TicketPowerStandard.html", "", "width=300, height=458");
+	}
+
+	function ShowPowerInf(id, type)
+	{
+		if(type=="1")
+		{
+			$(id).style.display="block";
+		}
+		else
+		{
+			$(id).style.display="none";
+		}
+	}
+
+	function f_OpenMediaPopup(sMode, sManNo, sMediaNo, h, w)
+	{
+		if (sMode == "A"){
+			window.open("PopupAlbum.asp?ManNo="+sManNo+"&MediaNo="+sMediaNo, "", "width="+w+", height=" + h);
+		}else{
+			window.open("PopupMovie.asp?ManNo="+sManNo+"&MediaNo="+sMediaNo, "", "width="+w+", height=" + h);
+		}
+	}
+
+	function FrameResize(frameId){
+		try{		
+			//
+			obj = document.getElementById(frameId);
+
+			if (obj.contentWindow.document.body) 
+			{ 
+				var innerBody = obj.contentWindow.document.body; 
+				//innerBody.scrollHeight; 
+				//var innerHeight = innerBody.scrollHeight + (innerBody.offsetHeight - innerBody.clientHeight);
+				var innerHeight = innerBody.scrollHeight - 5;
+				obj.style.height = "0px";
+				obj.style.height = innerHeight + "px";			
+			} 
+			
+			/*
+			frame = document.getElementById(frameId);
+			innerDoc = (frame.contentDocument) ? frame.contentDocument : frame.contentWindow.document;
+			objToResize = (frame.style) ? frame.style : frame;
+			objToResize.height = innerDoc.body.scrollHeight + 10;
+			*/
+		}
+		catch(err){
+		window.status = err.message;
+		}
+	}
+
+	//티켓케스트 등록
+	function fnSetTicketCast() {
+
+			new Ajax.Request("TicketCastWork.asp",
+				{
+					method:'POST',
+					parameters : {MemberCode:'', ManNo:'45453'},
+					onLoading : function() {},
+					onSuccess : function(returnValue)
+					{
+						var returnValue = returnValue.responseText;
+						if (returnValue == 'Y')
+						{
+							if (confirm("티켓캐스트에 등록되었습니다. 신청내역을 확인하시겠습니까?"))
+							{
+								window.open("http://ticket.interpark.com/Ticket/MyTicket/Personal_Main.asp");
+							}
+						}
+						else 	{
+							alert('티켓캐스트 등록실패');
+						}
+					},
+					onFailure : function() {
+							alert('티켓캐스트 등록실패');
+					},
+					onComplate : function() {}
+			
+				});
+	}
+
+
+	window.onload = function() {
+		Man_TabChange('45453', '1', '하현상')
+	};
+
+</script>
+
+
+</div>
+<div class="location"> <a href="http://playdb.co.kr"><img src="http://ticketimage.interpark.com/TicketImage/playdb/2010_renewal/ico_home.gif" alt="홈" class="btnstyle" /></a> &gt; <a href="http://www.playdb.co.kr/artistdb/index.asp">인물메인</a> &gt; <a href="http://www.playdb.co.kr/artistdb/list.asp?code=013001"> 가수</a></div>
+<!-- //로케이션 -->
+<!-- 인물상세 정보 -->
+<div class="psdetail">
+	<div class="psdetail_photo"> <img id="manImage" src="http://ticketimage.interpark.com/PlayDictionary/DATA/PlayDic/PlayDicUpload/040004/19/10/0400041910_45453_02.745.gif" class="mainimg" onError='javascript:this.src="http://ticketimage.interpark.com/TicketImage/playdb/2010_renewal/noimg_ps.gif"'/>
+		
+						
+		 
+	</div>
+	<div class="psdetail_info">
+	
+		<!-- 타이틀 -->
+		<div class="psdetail_subject">
+			<table border="0" cellspacing="0" cellpadding="0">
+				<tr>
+					<td><span class="title">하현상</span></td>
+					<!--<td><a href="javascript: window.external.AddFavorite('http://www.playdb.co.kr/artistdb/detail.asp?ManNo=45453' , '플레이디비 - 하현상 인물정보');"><img src="http://ticketimage.interpark.com/TicketImage/playdb/2010_renewal/btn_favorite.gif"  class="detailicon" /></a><a href="#" onclick="ShareSNS('twitter', '[플레이디비] 하현상 인물정보', 'http://www.playdb.co.kr/artistdb/detail.asp?ManNo=45453');"><img src="http://ticketimage.interpark.com/TicketImage/playdb/2010_renewal/btn_twitter.gif" class="detailicon" border="0" /></a><a href="#" onclick="ShareSNS('facebook','[플레이디비] 하현상 인물정보', 'kind=2&p1=45453');"><img src="http://ticketimage.interpark.com/TicketImage/playdb/2010_renewal/btn_facebook.gif"  class="detailicon" border="0" /></a><!-- <a href="#" onclick="RequestSNS('facebook','[플레이디비] 하현상 인물정보', 'kind=2&p1=45453');"><img src="http://ticketimage.interpark.com/TicketImage/playdb/2010_renewal/btn_facebook.gif"  class="detailicon" border="0" /></a> </td>-->
+				</tr>
+			</table>
+		</div>
+		<!-- //타이틀 -->
+		<!-- 세부정보 -->
+		<div class="detaillist2">
+			<dl>
+				<!-- 직업 -->
+				 
+				<dt><strong>직업</strong></dt>
+				<dd>가수</dd>
+				
+				<!-- 데뷔년도 -->
+				
+				<!-- 생년월일 -->
+				
+				<dt ><strong>생년월일</strong></dt>
+				<dd class="detaildate">1998.09.14</dd>
+				
+				<!-- 사망일 -->
+				
+				<!-- 신체조건 -->
+				
+				<!-- 소속사 -->
+				
+				<!-- 소속그룹,멤버 -->
+				
+					<dt><strong>소속그룹</strong></dt>				
+					
+					<dd>
+					<a href='http://www.playdb.co.kr/artistdb/detail.asp?ManNo=45473'>호피폴라</a> 
+				</dd>
+				<!-- 사이트 -->
+				
+				<dt><strong>사이트</strong></dt>
+				<dd class="pssite"><a href='http://www.instagram.com/hahyunsang.official' target='_New'>인스타그램</a> | <a href='http://twitter.com/HAHYUNSANG_ON' target='_New'>트위터</a> |<a href='http://www.youtube.com/hyunsangha_official' target='_New'>유튜브</a></dd>
+				
+			</dl>
+
+			<!--SNS 스타로그-->
+			<div class="detail_starlog">
+				<span class="share_sns">
+					<a href="javascript: window.external.AddFavorite('http://www.playdb.co.kr/artistdb/detail.asp?ManNo=45453' , '플레이디비 - 하현상 인물정보');"><img src="http://ticketimage.interpark.com/TicketImage/playdb/2010_renewal/btn_favorite2.gif"  class="detailicon" /></a><a href="#" onclick="ShareSNS('twitter', '[플레이디비] 하현상 인물정보', 'http://www.playdb.co.kr/artistdb/detail.asp?ManNo=45453');"><img src="http://ticketimage.interpark.com/TicketImage/playdb/2010_renewal/btn_twitter.gif" class="detailicon" border="0" /></a><a href="#" onclick="SNSFaceBook('[플레이디비] 하현상 인물정보', 'http://ticketimage.interpark.com/PlayDictionary/DATA/PlayDic/PlayDicUpload/040004/19/10/0400041910_45453_02.745.gif', 'http://www.playdb.co.kr/artistdb/detail.asp?ManNo=45453','가수');"><img src="http://ticketimage.interpark.com/TicketImage/playdb/2010_renewal/btn_facebook.gif"  class="detailicon" border="0" /></a>
+				</span>
+
+				
+				<span class="starlog">
+					<!--<a href="http://starlog.interpark.com/StarHome.asp?StarNo=45453" target="_blank"><img src="http://ticketimage.interpark.com/TicketImage/playdb/2010_renewal/txt_starlog2.gif" class="txt_starlog" alt="STARLOG" /><span style="cursor:pointer; cursor:hand;">하현상 STARLOG 바로가기</span><img src="http://ticketimage.interpark.com/TicketImage/playdb/2010_renewal/ico_arrow5.gif" class="ico_starlog" alt="" /></a>-->
+					<!-- 팔로워가 있을 경우 노출 -->
+					
+						<img src="http://ticketimage.interpark.com/TicketImage/playdb/2010_renewal/txt_follower.gif" alt="Follower" />
+						<strong>3,563</strong>
+						
+						
+							<span class="btn_starlog"><a href="http://www.playdb.co.kr/member/login.asp?kind=http://www.playdb.co.kr/artistdb/detail.asp?ManNo=45453&part=가수"><img src="http://ticketimage.interpark.com/TicketImage/playdb/2010_renewal/btn_follow.gif" alt="티켓캐스트 등록" /></a></span>
+						
+				</span>
+				
+			</div>
+
+		</div>
+		<!-- //세부정보 -->
+
+		<!-- 티켓파워 상세 -->
+
+		
+		
+<div class="powerlayer2" style="display:none;" id="TicketPowerDetail" >
+	<!-- 장르별 티켓파워 -->
+    <!--
+	<table width="100%" border="0" cellspacing="0" cellpadding="0" >
+		<tr>
+			<td class="title">
+				<table width="100%" border="0" cellspacing="0" cellpadding="0">
+					<tr>
+						<td class="title">장르별 티켓파워 &nbsp;<a href="javascript:ShowDetail('2')"><img src="http://ticketimage.interpark.com/TicketImage/playdb/2010_renewal/btn_close3.gif" class="btnstyle" /> </a></td>
+						<td width="30" class="title"><a href="javascript:ShowStandard('1');"><img src="http://ticketimage.interpark.com/TicketImage/playdb/2010_renewal/btn_standard.gif"/></a></td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+					
+					<tr>
+						<td width="50" height="16"></td>
+						<td width="80">
+						<img src="http://ticketimage.interpark.com/TicketImage/playdb/2010_renewal/star_green.gif" /><img src="http://ticketimage.interpark.com/TicketImage/playdb/2010_renewal/star_green_half.gif" /></td>
+						<td></td>
+					</tr>
+				
+					
+				</table>
+				<table border="0" cellpadding="0" cellspacing="0" width="100%">
+					<tr>
+						<td class="ex">* 티켓파워는 장르별 티켓파워의 평균입니다.</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+		<tr>
+			<td height="7"></td>
+		</tr>
+	</table>
+	-->
+	<!-- //장르별 티켓파워 -->
+	<!-- 인기지수 -->
+	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+		<!--
+		<tr>
+			<td height="7" class="line"></td>
+		</tr>
+		-->
+		<tr>
+			<td class="title">인기지수&nbsp;<a href="javascript:ShowDetail('2')"><img src="http://ticketimage.interpark.com/TicketImage/playdb/2010_renewal/btn_close3.gif" class="btnstyle" /> </a></td>
+		</tr>
+		<tr>
+			<td>
+				<table border="0" cellpadding="0" cellspacing="0" width="100%">
+					<tr>
+						<td height="16"  width="60" onmouseover="javascript:ShowPowerInf('powerInfo1',1)" onmouseout="javascript:ShowPowerInf('powerInfo1',2)">참여도</td>
+						<td>
+							<table width="161" border="0" cellpadding="0" cellspacing="0">
+								<tr>
+									<td height="9" background="http://ticketimage.interpark.com/TicketImage/playdb/detail/graph_gray.gif">
+										<table width="0%" border="0" cellpadding="0" cellspacing="0" >
+											<tr>
+												<td height="9" background="http://ticketimage.interpark.com/TicketImage/playdb/detail/graph.gif"></td>
+											</tr>
+										</table>
+									</td>
+								</tr>
+							</table>
+							<div class="JoinCntDiv" style="display:none; z-index:20; position:absolute;" id="powerInfo1">
+								<table border="0" cellpadding="0" cellspacing="0">
+									<tr>
+										<td class="box">참여 : <strong>4</strong> 회<br />
+											(주간방문 300회 기준)</td>
+									</tr>
+								</table>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td height="16"  width="60" onmouseover="javascript:ShowPowerInf('powerInfo2',1)" onmouseout="javascript:ShowPowerInf('powerInfo2',2)">최근방문</td>
+						<td>
+							<table width="161" border="0" cellpadding="0" cellspacing="0">
+								<tr>
+									<td height="9" background="http://ticketimage.interpark.com/TicketImage/playdb/detail/graph_gray.gif">
+										<table width="2%" border="0" cellpadding="0" cellspacing="0" >
+											<tr>
+												<td height="9" background="http://ticketimage.interpark.com/TicketImage/playdb/detail/graph.gif"></td>
+											</tr>
+										</table>
+									</td>
+								</tr>
+							</table>
+							<div class="WeekViewCntDiv" style="display:none; z-index:20; position:absolute;" id="powerInfo2">
+								<table border="0" cellpadding="0" cellspacing="0">
+									<tr>
+										<td class="box">최근방문 : <strong>26</strong> 회<br />
+											(주간방문 3,000회 기준)</td>
+									</tr>
+								</table>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td height="16"  width="60" onmouseover="javascript:ShowPowerInf('powerInfo3',1)" onmouseout="javascript:ShowPowerInf('powerInfo3',2)">누적방문</td>
+						<td>
+							<table width="161" border="0" cellpadding="0" cellspacing="0">
+								<tr>
+									<td height="9" background="http://ticketimage.interpark.com/TicketImage/playdb/detail/graph_gray.gif">
+										<table width="26%" border="0" cellpadding="0" cellspacing="0" >
+											<tr>
+												<td height="9" background="http://ticketimage.interpark.com/TicketImage/playdb/detail/graph.gif"></td>
+											</tr>
+										</table>
+										<div class="ViewCntDiv" style="display:none; z-index:20; position:absolute;" id="powerInfo3">
+											<table border="0" cellpadding="0" cellspacing="0">
+												<tr>
+													<td class="box">누적방문 : <strong>7,753</strong> 회<br />
+														(누적방문 20,000회 기준)</td>
+												</tr>
+											</table>
+										</div>
+									</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+		<tr>
+			<td height="8"></td>
+		</tr>
+	</table>
+	<!-- //인기지수 -->
+	<!-- 예매랭킹 -->
+	
+	<!-- //예매랭킹 -->
+</div>
+	<!-- 티켓 파워 기준 -->
+	
+
+
+	<!-- 티켓 파워 기준 -->
+
+
+		<!--티켓파워 없애고 검색랭킹만 나오게 수정. 테이블 수정됨. 2011-04-07-->
+		<!-- 티켓파워 -->
+		<div class="psdetail_power">
+			<!--<table width="240" border="0" cellspacing="0" cellpadding="0">
+				<tr>
+					<td width="155" height="30" align="center" onmouseover="ShowDetail('1')" >
+						<dl>
+							<dt><img src="http://ticketimage.interpark.com/TicketImage/playdb/2010_renewal/title_ticketpower.gif" alt="티켓파워"  /></dt>
+							<dd>
+							<img src="http://ticketimage.interpark.com/TicketImage/playdb/2010_renewal/icon_powerstar.gif" />
+							
+							<img src="http://ticketimage.interpark.com/TicketImage/playdb/2010_renewal/icon_powernone.gif" />
+							</dd>
+						</dl>
+					</td>
+					<td width="1" align="center" bgcolor="#f9f9f9"></td>
+				</tr>
+				</table>
+				-->
+				<table width="84" border="0" cellspacing="0" cellpadding="0">
+				  <tr>
+					<td align="center" onmouseover="ShowDetail('1')" >
+						<dl>
+							<dt><img src="http://ticketimage.interpark.com/TicketImage/playdb/2010_renewal/title_searchrank.gif" alt="검색랭킹" /></dt>
+							<dd><img src="http://ticketimage.interpark.com/TicketImage/playdb/2010_renewal/icon_powernumnone.gif">
+							</dd>
+						</dl>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<!-- //티켓파워 -->
+	</div>
+	<!-- 공연스틸/동영상-->
+	
+		
+	<div class="picturelist_noimg2">
+		<p><img src="http://ticketimage.interpark.com/TicketImage/playdb/2010_renewal/detail_imgenroll2.gif" border="0" usemap="#imgenroll" />
+			<map name="imgenroll" id="imgenroll">
+				<area shape="rect" coords="83,117,198,147" href="javascript:Man_TabChange('45453', '8', '하현상')" />
+				<area shape="rect" coords="83,84,198,114" href="javascript:Man_TabChange('45453', '8', '하현상')" />
+			</map>
+		</p>
+	</div>
+
+		
+
+	<!-- //공연스틸/동영상-->
+	<!-- 공연스틸/동영상 nothing -->
+	
+	<!-- //공연스틸/동영상 nothing -->
+</div>
+<!-- //인물상세 정보 -->
+<!-- 컨텐츠 -->
+
+
+<div id="contents">
+	<!-- 좌측 컨텐츠-->
+	<div class="left">
+		<!-- 뮤지션 배너 추가 시작 -->
+							
+		<!-- //뮤지션 배너 추가 끝 -->
+
+		<!-- 탭 -->		
+		<div class="detail_tab">
+			<!--<div class="newicon_ps2"><img src="http://ticketimage.interpark.com/TicketImage/playdb/2010_renewal/icon_new2.gif" /></div>-->
+			<ul>
+				<li><a href="javascript:Man_TabChange('45453', '1', '하현상')"><img id="man_Tab1" src="http://ticketimage.interpark.com/TicketImage/playdb/2010_renewal/playdetail_tab1_on.gif" alt="기본소개" /></a></li>
+				<li><a href="javascript:Man_TabChange('45453', '2', '하현상')"><img id="man_Tab2"  src="http://ticketimage.interpark.com/TicketImage/playdb/2010_renewal/psdetail_tab2_off.gif" alt="인물소개" /></a></li>
+				<li><a href="javascript:Man_TabChange('45453', '3', '하현상')"><img id="man_Tab3"  src="http://ticketimage.interpark.com/TicketImage/playdb/2010_renewal/psdetail_tab3_off.gif" alt="출연작품" /></a></li>
+				<li><a href="javascript:Man_TabChange('45453', '4', '하현상')"><img id="man_Tab4"  src="http://ticketimage.interpark.com/TicketImage/playdb/2010_renewal/psdetail_tab4_off.gif" alt="인맥" /></a></li>
+				<li><a href="javascript:Man_TabChange('45453', '5', '하현상')"><img id="man_Tab5"  src="http://ticketimage.interpark.com/TicketImage/playdb/2010_renewal/playdetail_tab5_off.gif"  alt="영상/포토" /></a></li>
+				<li><a href="javascript:Man_TabChange('45453', '7', '하현상')"><img id="man_Tab7"  src="http://ticketimage.interpark.com/TicketImage/playdb/2010_renewal/playdetail_tab6_off.gif"  alt="관련기사" /></a></li>
+			</ul>
+			<ul class="detail_tabtxt">
+				<li><span class="countimg"><a href="javascript:Man_TabChange('45453', '6','하현상')"><img id="man_Tab6" src="http://ticketimage.interpark.com/TicketImage/playdb/2010_renewal/playdetail_tabtxt4_off.gif" /></a></span><span class="counttxt_tab">(<strong>4</strong>)</span></li>
+				<li class="tabline"><a href="#"><img src="http://ticketimage.interpark.com/TicketImage/playdb/2010_renewal/line_tab.gif" /></a></li>
+				<li><span class="countimg"><a href="javascript:Man_TabChange('45453', '9','하현상')"><img id="man_Tab8" src="http://ticketimage.interpark.com/TicketImage/playdb/2010_renewal/playdetail_tabtxt2_off.gif" /></a></span><span class="counttxt_tab">(<strong>0</strong>)</span></li>
+			</ul>
+		</div>
+		<!-- //탭 -->
+		<!-- 아이프레임 -->
+		<div id="detailcontents" style="display:none">
+ 			<iframe id="iFrmContent" name="iFrmContent" src="/artistdb/Detail_Content_new.asp?TabKind=2&ManNo=45453" name="myframe" width="100%" height="100%" marginwidth="0" marginheight="0" frameborder="no" scrolling="no" ></iframe>
+		</div>
+
+		<div id="baseDiv" style="display:">
+		<div id="Content1" class="detail_contents">
+			<!-- 인물소개-->
+			
+
+		<div class="detail_contentsbox">
+				<div class="title">
+					<h4><img src="http://ticketimage.interpark.com/TicketImage/playdb/2010_renewal/detail_title_txt12.gif" alt="출연작품" /></h4>
+					<a href="javascript:Man_TabChange('45453','3','하현상')" class="more"><img src="http://ticketimage.interpark.com/TicketImage/playdb/2010_renewal/btn_more.gif" /></a></div>
+				<table width="650" border="0" cellspacing="0" cellpadding="0">
+			<tr>
+						<td width="325" height="120" valign="top">
+							<!-- 리스트-->
+							<table width="320" border="0" cellspacing="0" cellpadding="0">
+								<tr>
+									<td width="92"><a href="http://www.playdb.co.kr/playdb/playdbDetail.asp?sReqPlayno=189970"><img src="http://ticketimage.interpark.com/PlayDictionary/DATA/PlayDic/PlayDicUpload/040001/23/06/0400012306_189970_01.836.gif" class="img_size4" onerror="this.src='http://ticketimage.interpark.com/TicketImage/07playdb/noimg_160x200.gif'"/></a></td>
+									<td>
+										<table width="220" border="0" cellpadding="0" cellspacing="0">
+											<tr>
+												<td class="ptitle"><a href="http://www.playdb.co.kr/playdb/playdbDetail.asp?sReqPlayno=189970">하현상 콘서트 - 부산</a></td>
+											</tr>
+											<tr>
+												<td height="12" class="time">2023.08.12 ~ 2023.08.12</td>
+											</tr>
+											<tr>
+												<td height="12" class="small"><a href="http://www.playdb.co.kr/placedb/PlacedbInfo.asp?PlacecCD=2451">센텀시티 소향씨어터 신한카드홀</a></td>
+											</tr>
+											<tr>
+												<td> </td>
+											</tr>
+											<tr>
+												<td height="12">
+													<table border="0" cellpadding="0" cellspacing="0">
+														<tr>
+															<td class="small2"> </td>
+															<td class="padding5">
+															
+															</td>
+															<td class="small2"> </td>
+															<td class="padding5">
+															</td>
+														</tr>
+													</table>
+												</td>
+											</tr>
+										</table>
+									</td>
+								</tr>
+							</table>
+							<!-- //리스트-->
+						</td>					
+			
+						<td width="325" height="120" valign="top">
+							<!-- 리스트-->
+							<table width="320" border="0" cellspacing="0" cellpadding="0">
+								<tr>
+									<td width="92"><a href="http://www.playdb.co.kr/playdb/playdbDetail.asp?sReqPlayno=186124"><img src="http://ticketimage.interpark.com/PlayDictionary/DATA/PlayDic/PlayDicUpload/040001/23/03/0400012303_186124_01.952.gif" class="img_size4" onerror="this.src='http://ticketimage.interpark.com/TicketImage/07playdb/noimg_160x200.gif'"/></a></td>
+									<td>
+										<table width="220" border="0" cellpadding="0" cellspacing="0">
+											<tr>
+												<td class="ptitle"><a href="http://www.playdb.co.kr/playdb/playdbDetail.asp?sReqPlayno=186124">메가필드뮤직페스티벌 2023</a></td>
+											</tr>
+											<tr>
+												<td height="12" class="time">2023.06.17 ~ 2023.06.18</td>
+											</tr>
+											<tr>
+												<td height="12" class="small"><a href="http://www.playdb.co.kr/placedb/PlacedbInfo.asp?PlacecCD=891">난지 한강공원</a></td>
+											</tr>
+											<tr>
+												<td> </td>
+											</tr>
+											<tr>
+												<td height="12">
+													<table border="0" cellpadding="0" cellspacing="0">
+														<tr>
+															<td class="small2"> </td>
+															<td class="padding5">
+															
+															</td>
+															<td class="small2"> </td>
+															<td class="padding5">
+															</td>
+														</tr>
+													</table>
+												</td>
+											</tr>
+										</table>
+									</td>
+								</tr>
+							</table>
+							<!-- //리스트-->
+						</td>					
+			</tr/><tr>
+						<td width="325" height="120" valign="top">
+							<!-- 리스트-->
+							<table width="320" border="0" cellspacing="0" cellpadding="0">
+								<tr>
+									<td width="92"><a href="http://www.playdb.co.kr/playdb/playdbDetail.asp?sReqPlayno=185461"><img src="http://ticketimage.interpark.com/PlayDictionary/DATA/PlayDic/PlayDicUpload/040001/23/02/0400012302_185461_01.030.gif" class="img_size4" onerror="this.src='http://ticketimage.interpark.com/TicketImage/07playdb/noimg_160x200.gif'"/></a></td>
+									<td>
+										<table width="220" border="0" cellpadding="0" cellspacing="0">
+											<tr>
+												<td class="ptitle"><a href="http://www.playdb.co.kr/playdb/playdbDetail.asp?sReqPlayno=185461">뷰티풀 민트 라이프 2023</a></td>
+											</tr>
+											<tr>
+												<td height="12" class="time">2023.05.13 ~ 2023.05.14</td>
+											</tr>
+											<tr>
+												<td height="12" class="small"><a href="http://www.playdb.co.kr/placedb/PlacedbInfo.asp?PlacecCD=470">올림픽공원</a></td>
+											</tr>
+											<tr>
+												<td> </td>
+											</tr>
+											<tr>
+												<td height="12">
+													<table border="0" cellpadding="0" cellspacing="0">
+														<tr>
+															<td class="small2"> </td>
+															<td class="padding5">
+															
+															</td>
+															<td class="small2"> </td>
+															<td class="padding5">
+															</td>
+														</tr>
+													</table>
+												</td>
+											</tr>
+										</table>
+									</td>
+								</tr>
+							</table>
+							<!-- //리스트-->
+						</td>					
+			
+						<td width="325" height="120" valign="top">
+							<!-- 리스트-->
+							<table width="320" border="0" cellspacing="0" cellpadding="0">
+								<tr>
+									<td width="92"><a href="http://www.playdb.co.kr/playdb/playdbDetail.asp?sReqPlayno=185943"><img src="http://ticketimage.interpark.com/PlayDictionary/DATA/PlayDic/PlayDicUpload/040001/23/03/0400012303_185943_01.726.gif" class="img_size4" onerror="this.src='http://ticketimage.interpark.com/TicketImage/07playdb/noimg_160x200.gif'"/></a></td>
+									<td>
+										<table width="220" border="0" cellpadding="0" cellspacing="0">
+											<tr>
+												<td class="ptitle"><a href="http://www.playdb.co.kr/playdb/playdbDetail.asp?sReqPlayno=185943">하현상, 스윗소로우 콘서트 - 부산</a></td>
+											</tr>
+											<tr>
+												<td height="12" class="time">2023.04.16 ~ 2023.04.16</td>
+											</tr>
+											<tr>
+												<td height="12" class="small"><a href="http://www.playdb.co.kr/placedb/PlacedbInfo.asp?PlacecCD=672">KBS부산홀</a></td>
+											</tr>
+											<tr>
+												<td> </td>
+											</tr>
+											<tr>
+												<td height="12">
+													<table border="0" cellpadding="0" cellspacing="0">
+														<tr>
+															<td class="small2"> </td>
+															<td class="padding5">
+															
+															</td>
+															<td class="small2"> </td>
+															<td class="padding5">
+															</td>
+														</tr>
+													</table>
+												</td>
+											</tr>
+										</table>
+									</td>
+								</tr>
+							</table>
+							<!-- //리스트-->
+						</td>					
+			</tr/><tr>
+						<td width="325" height="120" valign="top">
+							<!-- 리스트-->
+							<table width="320" border="0" cellspacing="0" cellpadding="0">
+								<tr>
+									<td width="92"><a href="http://www.playdb.co.kr/playdb/playdbDetail.asp?sReqPlayno=185378"><img src="http://ticketimage.interpark.com/PlayDictionary/DATA/PlayDic/PlayDicUpload/040001/23/02/0400012302_185378_01.230.gif" class="img_size4" onerror="this.src='http://ticketimage.interpark.com/TicketImage/07playdb/noimg_160x200.gif'"/></a></td>
+									<td>
+										<table width="220" border="0" cellpadding="0" cellspacing="0">
+											<tr>
+												<td class="ptitle"><a href="http://www.playdb.co.kr/playdb/playdbDetail.asp?sReqPlayno=185378">사운드베리 시어터</a></td>
+											</tr>
+											<tr>
+												<td height="12" class="time">2023.03.25 ~ 2023.03.26</td>
+											</tr>
+											<tr>
+												<td height="12" class="small"><a href="http://www.playdb.co.kr/placedb/PlacedbInfo.asp?PlacecCD=2119">블루스퀘어 마스터카드홀</a></td>
+											</tr>
+											<tr>
+												<td> </td>
+											</tr>
+											<tr>
+												<td height="12">
+													<table border="0" cellpadding="0" cellspacing="0">
+														<tr>
+															<td class="small2"> </td>
+															<td class="padding5">
+															
+															</td>
+															<td class="small2"> </td>
+															<td class="padding5">
+															</td>
+														</tr>
+													</table>
+												</td>
+											</tr>
+										</table>
+									</td>
+								</tr>
+							</table>
+							<!-- //리스트-->
+						</td>					
+			
+						<td width="325" height="120" valign="top">
+							<!-- 리스트-->
+							<table width="320" border="0" cellspacing="0" cellpadding="0">
+								<tr>
+									<td width="92"><a href="http://www.playdb.co.kr/playdb/playdbDetail.asp?sReqPlayno=184329"><img src="http://ticketimage.interpark.com/PlayDictionary/DATA/PlayDic/PlayDicUpload/040001/23/01/0400012301_184329_01.938.gif" class="img_size4" onerror="this.src='http://ticketimage.interpark.com/TicketImage/07playdb/noimg_160x200.gif'"/></a></td>
+									<td>
+										<table width="220" border="0" cellpadding="0" cellspacing="0">
+											<tr>
+												<td class="ptitle"><a href="http://www.playdb.co.kr/playdb/playdbDetail.asp?sReqPlayno=184329">어썸스테이지 콘서트 3</a></td>
+											</tr>
+											<tr>
+												<td height="12" class="time">2023.02.26 ~ 2023.02.26</td>
+											</tr>
+											<tr>
+												<td height="12" class="small"><a href="http://www.playdb.co.kr/placedb/PlacedbInfo.asp?PlacecCD=2119">블루스퀘어 마스터카드홀</a></td>
+											</tr>
+											<tr>
+												<td> </td>
+											</tr>
+											<tr>
+												<td height="12">
+													<table border="0" cellpadding="0" cellspacing="0">
+														<tr>
+															<td class="small2"> </td>
+															<td class="padding5">
+															
+															</td>
+															<td class="small2"> </td>
+															<td class="padding5">
+															</td>
+														</tr>
+													</table>
+												</td>
+											</tr>
+										</table>
+									</td>
+								</tr>
+							</table>
+							<!-- //리스트-->
+						</td>					
+			</tr/><tr>
+						<td width="325" height="120" valign="top">
+							<!-- 리스트-->
+							<table width="320" border="0" cellspacing="0" cellpadding="0">
+								<tr>
+									<td width="92"><a href="http://www.playdb.co.kr/playdb/playdbDetail.asp?sReqPlayno=182090"><img src="http://ticketimage.interpark.com/PlayDictionary/DATA/PlayDic/PlayDicUpload/040001/22/11/0400012211_182090_01.726.gif" class="img_size4" onerror="this.src='http://ticketimage.interpark.com/TicketImage/07playdb/noimg_160x200.gif'"/></a></td>
+									<td>
+										<table width="220" border="0" cellpadding="0" cellspacing="0">
+											<tr>
+												<td class="ptitle"><a href="http://www.playdb.co.kr/playdb/playdbDetail.asp?sReqPlayno=182090">썸데이 씨어터 라스트 칸타빌레</a></td>
+											</tr>
+											<tr>
+												<td height="12" class="time">2022.12.17 ~ 2022.12.18</td>
+											</tr>
+											<tr>
+												<td height="12" class="small"><a href="http://www.playdb.co.kr/placedb/PlacedbInfo.asp?PlacecCD=61">세종문화회관 대극장</a></td>
+											</tr>
+											<tr>
+												<td> </td>
+											</tr>
+											<tr>
+												<td height="12">
+													<table border="0" cellpadding="0" cellspacing="0">
+														<tr>
+															<td class="small2"> </td>
+															<td class="padding5">
+															
+															</td>
+															<td class="small2"> </td>
+															<td class="padding5">
+															</td>
+														</tr>
+													</table>
+												</td>
+											</tr>
+										</table>
+									</td>
+								</tr>
+							</table>
+							<!-- //리스트-->
+						</td>					
+			
+						<td width="325" height="120" valign="top">
+							<!-- 리스트-->
+							<table width="320" border="0" cellspacing="0" cellpadding="0">
+								<tr>
+									<td width="92"><a href="http://www.playdb.co.kr/playdb/playdbDetail.asp?sReqPlayno=178655"><img src="http://ticketimage.interpark.com/PlayDictionary/DATA/PlayDic/PlayDicUpload/040001/22/09/0400012209_178655_01.659.gif" class="img_size4" onerror="this.src='http://ticketimage.interpark.com/TicketImage/07playdb/noimg_160x200.gif'"/></a></td>
+									<td>
+										<table width="220" border="0" cellpadding="0" cellspacing="0">
+											<tr>
+												<td class="ptitle"><a href="http://www.playdb.co.kr/playdb/playdbDetail.asp?sReqPlayno=178655">썸데이 플레로마</a></td>
+											</tr>
+											<tr>
+												<td height="12" class="time">2022.10.09 ~ 2022.10.10</td>
+											</tr>
+											<tr>
+												<td height="12" class="small"><a href="http://www.playdb.co.kr/placedb/PlacedbInfo.asp?PlacecCD=152">연세대학교 노천극장</a></td>
+											</tr>
+											<tr>
+												<td> </td>
+											</tr>
+											<tr>
+												<td height="12">
+													<table border="0" cellpadding="0" cellspacing="0">
+														<tr>
+															<td class="small2"> </td>
+															<td class="padding5">
+															
+															</td>
+															<td class="small2"> </td>
+															<td class="padding5">
+															</td>
+														</tr>
+													</table>
+												</td>
+											</tr>
+										</table>
+									</td>
+								</tr>
+							</table>
+							<!-- //리스트-->
+						</td>					
+			</tr/><tr>
+						<td width="325" height="120" valign="top">
+							<!-- 리스트-->
+							<table width="320" border="0" cellspacing="0" cellpadding="0">
+								<tr>
+									<td width="92"><a href="http://www.playdb.co.kr/playdb/playdbDetail.asp?sReqPlayno=176551"><img src="http://ticketimage.interpark.com/PlayDictionary/DATA/PlayDic/PlayDicUpload/040001/22/07/0400012207_176551_01.245.gif" class="img_size4" onerror="this.src='http://ticketimage.interpark.com/TicketImage/07playdb/noimg_160x200.gif'"/></a></td>
+									<td>
+										<table width="220" border="0" cellpadding="0" cellspacing="0">
+											<tr>
+												<td class="ptitle"><a href="http://www.playdb.co.kr/playdb/playdbDetail.asp?sReqPlayno=176551">썸데이 페스티벌</a></td>
+											</tr>
+											<tr>
+												<td height="12" class="time">2022.09.03 ~ 2022.09.04</td>
+											</tr>
+											<tr>
+												<td height="12" class="small"><a href="http://www.playdb.co.kr/placedb/PlacedbInfo.asp?PlacecCD=891">난지 한강공원</a></td>
+											</tr>
+											<tr>
+												<td> </td>
+											</tr>
+											<tr>
+												<td height="12">
+													<table border="0" cellpadding="0" cellspacing="0">
+														<tr>
+															<td class="small2"> </td>
+															<td class="padding5">
+															
+															</td>
+															<td class="small2"> </td>
+															<td class="padding5">
+															</td>
+														</tr>
+													</table>
+												</td>
+											</tr>
+										</table>
+									</td>
+								</tr>
+							</table>
+							<!-- //리스트-->
+						</td>					
+			
+						<td width="325" height="120" valign="top">
+							<!-- 리스트-->
+							<table width="320" border="0" cellspacing="0" cellpadding="0">
+								<tr>
+									<td width="92"><a href="http://www.playdb.co.kr/playdb/playdbDetail.asp?sReqPlayno=177544"><img src="http://ticketimage.interpark.com/PlayDictionary/DATA/PlayDic/PlayDicUpload/040001/22/08/0400012208_177544_01.646.gif" class="img_size4" onerror="this.src='http://ticketimage.interpark.com/TicketImage/07playdb/noimg_160x200.gif'"/></a></td>
+									<td>
+										<table width="220" border="0" cellpadding="0" cellspacing="0">
+											<tr>
+												<td class="ptitle"><a href="http://www.playdb.co.kr/playdb/playdbDetail.asp?sReqPlayno=177544">어썸뮤직</a></td>
+											</tr>
+											<tr>
+												<td height="12" class="time">2022.08.20 ~ 2022.08.21</td>
+											</tr>
+											<tr>
+												<td height="12" class="small"><a href="http://www.playdb.co.kr/placedb/PlacedbInfo.asp?PlacecCD=345">세종대학교 대양홀</a></td>
+											</tr>
+											<tr>
+												<td> </td>
+											</tr>
+											<tr>
+												<td height="12">
+													<table border="0" cellpadding="0" cellspacing="0">
+														<tr>
+															<td class="small2"> </td>
+															<td class="padding5">
+															
+															</td>
+															<td class="small2"> </td>
+															<td class="padding5">
+															</td>
+														</tr>
+													</table>
+												</td>
+											</tr>
+										</table>
+									</td>
+								</tr>
+							</table>
+							<!-- //리스트-->
+						</td>					
+			</tr/>
+					</tr>
+			
+				</table>
+			</div>	
+			<!-- 경력-->
+			
+			<!-- //경력-->
+
+			<!-- 130312 수상 추가-->
+			
+			<!-- //수상-->
+			
+
+			<!-- 관련기사 -->
+			<div class="detail_contentsbox">
+				<div class="title">
+					<h4><img src="http://ticketimage.interpark.com/TicketImage/playdb/2010_renewal/detail_title_txt4.gif" alt="관련기사" /></h4>
+					<span class="count">(<strong>2</strong>)</span> <a href="javascript:Man_TabChange('45453','7','하현상')" class="more"><img src="http://ticketimage.interpark.com/TicketImage/playdb/2010_renewal/btn_more.gif" /></a> </div>
+				<table width="650" border="0" cellpadding="0" cellspacing="0">
+
+			
+					<tr>
+						<td class="pdbt">
+							<table  border="0" cellspacing="0" cellpadding="0">
+								<tr>
+									<td width="90">
+									<a href="/magazine/magazine_temp_view.asp?kindno=11&no=4870&NM=Y" target="_parent">
+									
+										<img src="http://ticketimage.interpark.com/PlayDictionary/DATA/PlayDic/PlayDicUpload/Magazine/2019/11/22_150519.jpg" onerror="this.src='http://ticketimage.interpark.com/TicketImage/07playdb/noimg_160x200.gif'" class="img_size3">
+									
+									</a>
+									</td>
+									<td>
+										<table  border="0" cellspacing="0" cellpadding="0">
+											<tr>
+												<td height="25"><a href="/magazine/magazine_temp_view.asp?kindno=11&no=4870&NM=Y" class="ptitle">연말 전국투어 콘서트 여는 ‘슈퍼밴드’ TOP3의 방송 이후 행보는?</a> <span class="time">2019.11.22<img src="http://ticketimage.interpark.com/TicketImage/playdb/2010_renewal/img_line.gif" class="img_line" /> 13111</span> </td>
+											</tr>
+											<tr>
+												<td class="none"><a href="/magazine/magazine_temp_view.asp?kindno=11&no=4870&NM=Y">&#x0D;
+올해 두 개의 음악 경연 프로그램이 시청자들의 큰 사랑을 받았다. 올해 초 방송을 시작했던 TV 조선의 '내일은 미스트롯'은 전국에 트롯 열풍을 일으켰고, 봄에는 JTBC의 &lsquo;슈퍼밴드&rsquo;가 다양한 밴드 음악과 개성 넘치는 뮤지션들을 소개하며 색다른 ..</a></td>
+											</tr>
+										</table>
+									</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+			<tr><td height="1" class="line"></td></tr>
+					<tr>
+						<td class="pdbt">
+							<table  border="0" cellspacing="0" cellpadding="0">
+								<tr>
+									<td width="90">
+									<a href="/magazine/magazine_temp_view.asp?kindno=2&no=4853&NM=Y" target="_parent">
+									
+										<img src="http://ticketimage.interpark.com/PlayDictionary/DATA/PlayDic/PlayDicUpload/Magazine/2019/11/15_111605.jpg" onerror="this.src='http://ticketimage.interpark.com/TicketImage/07playdb/noimg_160x200.gif'" class="img_size3">
+									
+									</a>
+									</td>
+									<td>
+										<table  border="0" cellspacing="0" cellpadding="0">
+											<tr>
+												<td height="25"><a href="/magazine/magazine_temp_view.asp?kindno=2&no=4853&NM=Y" class="ptitle">2019 슈퍼밴드 ‘TOP3’ 전국투어 콘서트…오늘(15일) 오후 2시부터 티켓 예매 시작   </a> <span class="time">2019.11.15<img src="http://ticketimage.interpark.com/TicketImage/playdb/2010_renewal/img_line.gif" class="img_line" /> 7185</span> </td>
+											</tr>
+											<tr>
+												<td class="none"><a href="/magazine/magazine_temp_view.asp?kindno=2&no=4853&NM=Y">지난 여름 전석 매진을 기록했던 '슈퍼밴드 콘서트'가 연말 공연으로 다시 돌아온다.&#x0D;
+&#x0D;
+'슈퍼밴드 콘서트'는 숨겨진 천재 뮤지션을 찾아 슈퍼밴드를 결성하는 JTBC 음악 예능 프로그램을 통해 결성된 밴드들의 무대를 만날 수 있는 자리다.&#x0D;
+&#x0D;
+슈..</a></td>
+											</tr>
+										</table>
+									</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+			
+				</table>
+			</div>
+			<!-- 관련 기사 -->
+			
+			<!-- 팬의 한마디 -->
+			<div>
+			<iframe id="iFrmEvent" name="iFrmEvent" scrolling="no" width="100%" height="100%" marginwidth="0" marginheight="0" frameborder="no" src="/artistdb/Detail_Content_new.asp?iFrmName=iFrmEvent&TabKind=0&ManNo=45453&etc=detail&pagesize=5&ListFlag=" ></iframe>
+			</div>
+
+			<!-- 팬의 한마디 -->
+			
+			<!-- //명장면/명대사-->
+
+			
+
+
+		</div>
+	</div>
+	</div>
+	<!-- //좌측 컨텐츠-->
+
+	<!-- 우측 컨텐츠-->
+	<div class="right">
+
+			<!-- 스타로그 배너 추가 2014-07-11 -->
+		<!-- 2015.01.13 배너 off -->
+		<!--<div class="bn_detail_right">
+			<p><a href="http://ticket.interpark.com/promotion/2015/ShowCase/showcase.asp" target="_blank"><img src="http://ticketimage.interpark.com/TicketImage/playdb/event/hottalk/showcase_150316.gif" alt="" /></a></p>
+		</div>-->
+		
+
+<!--
+		
+			<div class="bn_detail_right">
+				<p>
+					<a href="http://ticket.interpark.com/Contents/Promotion/2015/Event/IndeMusition" target="_blank">
+					<img src="http://ticketimage.interpark.com/TicketImage/playdb/event/hottalk/indie_151026.gif" alt="" />
+					</a>
+				</p>
+			</div>
+		-->
+		<!--	<div class="bn_detail_right">
+				<p>
+					<a href="http://www.kopis.or.kr/por/main/main.do" target="_blank">
+					<img src="http://ticketimage.interpark.com/TicketImage/playdb/adbanner/161205__280.gif" alt="" />
+					</a>
+				</p>		
+			</div>	-->
+			<!-- 2017.04.07 우측영역 배너 이미지 및 링크 변경 -->
+			<!--<div class="bn_detail_right">		
+				<p>
+					<a href="http://www.playdb.co.kr/magazine/MovieMain.asp?sReqMovieCategory=017015" target="_blank">
+					<img src="http://ticketimage.interpark.com/TicketImage/playdb/adbanner/160816__280.gif" alt="" />
+					</a>
+				</p>		
+			</div>-->
+			<!-- 2017.05.15 우측영역 배너 이미지 및 링크 변경 -->
+			<!--<div class="bn_detail_right">		
+				<p>
+					<a href="http://www.platform61.kr/load.asp?subPage=310.View&searchValue=&searchType=&page=1&idx=154" target="_blank">
+					<img src="http://ticketimage.interpark.com/TicketImage/playdb/adbanner/img_sanse_170515.gif" alt="" />
+					</a>
+				</p>		
+			</div>-->
+
+		<!-- //스타로그 배너 추가 2014-07-11 -->
+
+		
+		<!-- 트위터 위젯 Hoyhoyoung -->
+		<!--<iframe id="TwitterWidget" src="/common/TwitterWidgetB.asp?id=" width="100%" height="395" marginwidth="0" marginheight="0" frameborder="no" scrolling="no" > </iframe>-->
+
+		<!-- 인맥 -->
+		<table border="0" cellspacing="0" cellpadding="0">
+			<tr>
+				<td>
+					<div id="detail_root">
+						<iframe id="rightFrm" name="rightFrm" src="Right_Content.asp?ManNo=45453&ManName=하현상" width="100%" height="100%" marginwidth="0" marginheight="0" frameborder="no" scrolling="no" onload="window.FrameResize('rightFrm')"></iframe>
+					</div>
+			</td>
+			</tr>
+		<!-- 인맥 -->
+		<!-- 랭킹 -->
+		<tr><td>
+		
+		<div class="rightbox">
+			<div class="rightbox_title">
+				<h3><img src="http://ticketimage.interpark.com/TicketImage/playdb/2010_renewal/pstitle_rank_musician.gif"></h3>
+				<p><a href="http://www.playdb.co.kr/ranking/TotalRanking.asp"><img src="http://ticketimage.interpark.com/TicketImage/playdb/2010_renewal/btn_more.gif" class="more" /></a></p>
+			</div>
+			<div class="rightbox_list">
+		
+		
+				<table width="250" border="0" align="center" cellpadding="0" cellspacing="0">
+					<tr>
+						<td width="70" height="80" valign="top"><a href="http://www.playdb.co.kr/artistdb/detail.asp?ManNo=45597"><img src="http://ticketimage.interpark.com/PlayDictionary/DATA/PlayDic/PlayDicUpload/040004/19/11/0400041911_45597_02002.gif" class="img_size1" onError='javascript:this.src="http://ticketimage.interpark.com/TicketImage/playdb/2010_renewal/noimg_ps.gif"'/></a></td>
+						<td width="18" valign="top"><img src="http://ticketimage.interpark.com/TicketImage/playdb/2010_renewal/ranking_num_01.gif" alt="rank1" width="12" height="11" /></td>
+						<td valign="top">
+							<table width="164" border="0" cellpadding="0" cellspacing="0">
+								<tr>
+									<td valign="top">
+										<table width="164" border="0" cellspacing="0" cellpadding="0">
+											<tr>
+												<td class="plist2"><a href="http://www.playdb.co.kr/artistdb/detail.asp?ManNo=45597">산다라박</a></td>
+												<td width="40" align="center">
+												<img src="http://ticketimage.interpark.com/TicketImage/playdb/2010_renewal/ico_rank_up.gif" alt="up" />
+												<span class="rank_up">	29</span>
+												
+												</td>
+											</tr>
+										</table>
+									</td>
+								</tr>
+								<tr>
+									<td height="25">
+									
+								</tr>
+								<tr>
+									<td class="person_info">
+										<a href='http://twitter.com/krungy21' target='_New'>트위터</a>
+									</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+				</table>
+		
+				<table width="250" border="0" cellspacing="0" cellpadding="0" class="topline">
+
+		
+					<tr>
+						<td width="20"><img src="http://ticketimage.interpark.com/TicketImage/playdb/2010_renewal/ranking_num_02.gif" alt="rank2" width="12" height="11" /></td>
+						<td class="ranktxt"><a href="http://www.playdb.co.kr/artistdb/detail.asp?ManNo=41812">블랙핑크</a></td>
+						<td width="40" align="center">
+							<img src="http://ticketimage.interpark.com/TicketImage/playdb/2010_renewal/ico_rank_up.gif" alt="up" />
+							<span class="rank_up">	1</span>
+							
+						</td>
+					</tr>
+		
+					<tr>
+						<td width="20"><img src="http://ticketimage.interpark.com/TicketImage/playdb/2010_renewal/ranking_num_03.gif" alt="rank2" width="12" height="11" /></td>
+						<td class="ranktxt"><a href="http://www.playdb.co.kr/artistdb/detail.asp?ManNo=47835">데이먼스 이어</a></td>
+						<td width="40" align="center">
+							<img src="http://ticketimage.interpark.com/TicketImage/playdb/2010_renewal/ico_rank_up.gif" alt="up" />
+							<span class="rank_up">	1</span>
+							
+						</td>
+					</tr>
+		
+					<tr>
+						<td width="20"><img src="http://ticketimage.interpark.com/TicketImage/playdb/2010_renewal/ranking_num_04.gif" alt="rank2" width="12" height="11" /></td>
+						<td class="ranktxt"><a href="http://www.playdb.co.kr/artistdb/detail.asp?ManNo=42330">포레스텔라</a></td>
+						<td width="40" align="center">
+							<img src="http://ticketimage.interpark.com/TicketImage/playdb/2010_renewal/ico_rank_up.gif" alt="up" />
+							<span class="rank_up">	44</span>
+							
+						</td>
+					</tr>
+		
+					<tr>
+						<td width="20"><img src="http://ticketimage.interpark.com/TicketImage/playdb/2010_renewal/ranking_num_05.gif" alt="rank2" width="12" height="11" /></td>
+						<td class="ranktxt"><a href="http://www.playdb.co.kr/artistdb/detail.asp?ManNo=4205">리사</a></td>
+						<td width="40" align="center">
+							<img src="http://ticketimage.interpark.com/TicketImage/playdb/2010_renewal/ico_rank_same.gif" alt="same" />
+						</td>
+					</tr>
+		
+				</table>
+			</div>
+		</div>
+		<!-- //랭킹 -->
+		<p><a href="javascript:Man_TabChange('45453', '8', '하현상')"><img src="http://ticketimage.interpark.com/TicketImage/playdb/2010_renewal/bn_info.gif" /></a></p>
+		</td></tr>
+	</table>
+		<div class="bannerBox rightSide">
+			<div class="adsbygoogle">
+				<!--<ins data-revive-zoneid="194" data-revive-id="32fc02fb74640f115edf4326579262d8"></ins>-->
+				<!--<script type="text/javascript" src="http://addb.interpark.com/RealMedia/ads/adstream_jx.ads/www.playdb.co.kr/ROS/menu/rectangle/out@Frame2"></script>-->
+				<!-- 개발 시 img태그 제거 및 adsbygoogle div 영역 위치 -->
+				<iframe width=280 height=250 noresize scrolling=no frameborder=0 marginheight=0 marginwidth=0 src="http://addb.interpark.com/RealMedia/ads/adstream_sx.ads/www.playdb.co.kr/ROS/menu/rectangle/out@Frame2"></iframe>
+			</div>
+		</div>
+	</div>
+	<!-- //우측 컨텐츠-->
+	<div class="clear"></div>
+</div>
+<!--
+<div class="floating" id="floatEvent">
+<a onclick="javascript:goEventPage();"><img src="http://ticketimage.interpark.com/TicketImage/playdb/2010_renewal/event_floating1.png" border="0" usemap="#floating_close" class="png24"  style="cursor:pointer;"></a>
+<map name="floating_close">
+<area shape="rect" coords="84,117,121,133" href="javascript:CloseEvent();" alt="닫기">
+</map>
+</div>
+-->
+
+
+<script type="text/javascript">
+
+	function CloseEvent()
+	{
+		$("floatingBanner").style.display = "none";
+	}
+	function goEventPage()
+	{
+		location.href="http://www.playdb.co.kr/event/Event_ReViewApplicationView.asp?sReqNo=5&sReqSeq=59";
+	}
+
+</script>
+<!-- //컨텐츠 -->
+
+	<div class="bannerBox footerAbove">
+			<!--<img class="adsbygoogle" alt="배너영역" src="http://ui.interpark.com:9103/data/images/common/blank_green.gif">-->
+			<!-- 개발 시 img태그 제거 및 adsbygoogle div 영역 위치 -->
+			<div class="adsbygoogle">
+				<!--<ins data-revive-zoneid="191" data-revive-id="32fc02fb74640f115edf4326579262d8"></ins>-->
+				<!--<script type="text/javascript" src="http://addb.interpark.com/RealMedia/ads/adstream_jx.ads/www.playdb.co.kr/ROS/bottom@Bottom"></script>-->
+				<iframe width=960 height=90 noresize scrolling=no frameborder=0 marginheight=0 marginwidth=0 src="http://addb.interpark.com/RealMedia/ads/adstream_sx.ads/www.playdb.co.kr/ROS/bottom@Bottom"></iframe>
+			</div>
+		</div>
+	<div class="clear"></div>
+	
+	<div style="padding:7px 0 0 0; text-align:center; color:#888888; letter-spacing:-1px;">플레이DB의 모든 공연DB는 다음, 네이트 등 포털사이트 공연정보로 연동되고 있습니다. </div>
+	
+	
+<script src="/Common/TPMobileFooter.js" defer="defer" type="text/javascript"></script>
+
+</div>
+    </div>
+    <script type="text/javascript" src="//ticket.interpark.com/common/footer/footer.js"></script>
+    <footer class="tourEnterFooter">
+      <div class="footCorp">
+        
+        <ul class="corpList">
+            <li>
+                <a href="https://corp.interpark.com/" target="_blank" title="새 창으로 열림">회사소개</a>
+            </li>
+            <li>
+                <a href="https://m.interpark.com/terms.html#agree" target="_blank" title="새 창으로 열림">이용약관</a>
+            </li>
+            <li>
+                <a href="https://m.interpark.com/terms.html#protect_privacy" class="bold" target="_blank" title="새 창으로 열림">개인정보처리방침</a>
+            </li>
+            <li>
+                <a href="https://m.interpark.com/terms.html#location_terms" target="_blank" title="새 창으로 열림">위치기반서비스 이용약관</a>
+            </li>
+            <li>
+                <a href="http://tour.interpark.com/company/companyOutsidecovenant.aspx" target="_blank" title="새 창으로 열림">여행약관</a>
+            </li>
+            <li>
+                <a href="http://www.playdb.co.kr/doc/content_update.asp" target="_blank" title="새 창으로 열림">컨텐츠 등록 문의</a>
+            </li>
+            <li>
+                <a href="http://ticket.interpark.com/TiKi/Info/ENTInfo.asp?info=c_info_20" target="_blank" title="새 창으로 열림">티켓판매안내</a>
+            </li>
+            <li>
+                <a href="https://travel.interpark.com/home/customer/board/notice/ticket" target="_blank" title="새 창으로 열림">공지사항</a>
+            </li>
+          <li class="">
+            <a href="javascript:;" class="sub">고객센터</a>
+            <ul class="depth">
+              <li><a href="http://tour.interpark.com/customer/" target="_blank" title="새 창으로 열림">투어 고객센터</a></li>
+              <li><a href="http://ticket.interpark.com/HelpDesk/HelpDeskMain.asp?&tid1=main_gnb&tid2=right_top&tid3=help&tid4=help" target="_blank" title="새 창으로 열림">티켓 고객센터</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="javascript:;" class="sub">Language</a>
+            <ul class="depth">
+              <li><a href="http://ticket.interpark.com" target="_blank" title="새 창으로 열림">Korean</a></li>
+              <li><a href="http://www.globalinterpark.com/main/main?lang=en&smid1=header&smid2=logout&smid3=language" target="_blank" title="새 창으로 열림">English</a></li>
+              <li><a href="http://www.globalinterpark.com/main/main?lang=ja&smid1=header&smid2=logout&smid3=language" target="_blank" title="새 창으로 열림">Japanese</a></li>
+              <li><a href="http://www.globalinterpark.com/main/main?lang=zh&smid1=header&smid2=logout&smid3=language" target="_blank" title="새 창으로 열림">Chinese</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div class="footInfo">
+        <div class="infoCol">
+          <h2 class="infoTitle">(주)인터파크트리플</h2>
+          <div class="infoContent">
+            <p>주소 서울시 강남구 삼성로 512 삼성동빌딩 10층</p>
+            <p>사업자등록번호 824-81-02515 <a class="linkText" href="javascript:businessPerson();" title="새 창으로 열림">사업자정보확인</a></p>
+            <p>통신판매업신고 2022-서울강남-02179</p>
+            <p>관광사업증 등록번호 : 제2014-42호</p>
+            <p>호스팅서비스제공자 (주)인터파크트리플｜대표이사 최휘영</p>
+          </div>
+        </div>
+        <div class="infoCol">
+          <h2 class="infoTitle">고객센터</h2>
+          <div class="infoContent">
+            <p>
+              <span>
+                투어
+                <a href="tel:1588-3443">1588-3443</a>
+              </span>
+              <span>
+                티켓
+                <a href="tel:1544-1555">1544-1555</a>
+              </span>
+            </p>
+            <p>
+              <span>
+                팩스
+                <a href="tel:02-830-7807">02-830-7807</a>
+              </span>
+              <span>
+                이메일
+                <a href="mailto:helpdesk@interparktriple.com">helpdesk@interparktriple.com</a>
+              </span>
+            </p>
+            <p>
+              <span>
+                해외항공
+                <a href="tel:02-3479-4399">02-3479-4399</a>
+              </span>
+              <span>
+                국내항공
+                <a href="tel:02-3479-4340">02-3479-4340</a>
+              </span>
+            </p>
+            <p>
+               <span>
+                   <a href="javascript:tourOpen();" class="linkText" title="새 창으로 열림">투어 1:1문의</a>
+               </span>
+               <span>
+                   <a href="https://ticket.interpark.com/HelpDesk/SosWrite.asp" class="linkText" target="_blank" title="새 창으로 열림">티켓 1:1문의</a>
+               </span>
+            </p>
+          </div>
+        </div>
+        <div class="infoCol">
+          <h2 class="infoTitle">전자금융거래 분쟁처리 담당정보</h2>
+          <div class="infoContent">
+            <p>
+              <span>
+                투어
+                <a href="tel:1588-3443">1588-3443</a>
+              </span>
+              <span>
+                티켓
+                <a href="tel:1544-1555">1544-1555</a>
+              </span>
+            </p>
+            <p>
+              <span>
+                팩스
+                <a href="tel:02-830-8295">02-830-8295</a>
+              </span>
+              <span>
+                이메일
+                <a href="mailto:intersolution@interparktriple.com">intersolution@interparktriple.com</a>
+              </span>
+            </p>
+            <p>
+              개인정보보호책임자 <a href="mailto:cpo@interparktriple.com">cpo@interparktriple.com</a>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="footNotice">
+        <p>(주)인터파크트리플은 항공사가 제공하는 개별 항공권 및 여행사가 제공하는 일부 여행상품에 대하여 통신판매중개자의 지위를 가지며, 해당상품, 상품정보, 거래에 관한
+          의무와 책임은 판매자에게 있습니다.</p>
+        <p>항공권 또는 항공권이 포함된 경우, 표시되는 상품요금은 예상 유류할증료와 제세공과금이 포함된 가격이며, 발권일/환율 등에 따라 변동될 수 있습니다.</p>
+        <p>(주)인터파크트리플은 인터파크티켓, 인터파크투어의 통신판매중개자로서 통신판매의 당사자가 아니므로, 개별 판매자가 등록한 오픈마켓 상품에 대해서 (주)인터파크트리플은 일체
+          책임을 지지 않습니다.</p>
+        <p>Copyright ⓒ InterparkTriple Corp. All Rights Reserved.</p>
+      </div>
+    </footer>
+<!-- GA 태깅 -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5QCJFLB" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+</body>
+<script type="text/javascript" src="//www.playdb.co.kr/common/GA_Tracking/GA_Tracking.js"></script>
+</html>
